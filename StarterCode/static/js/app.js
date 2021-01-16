@@ -33,15 +33,18 @@ d3.json("samples.json").then(function(data) {
     console.log (otuids);
 
 
-    for (const property in otuids) {
-        console.log(`OTU ${otuids[property]}`);
-      }
+
+    // for (const property in otuids) {
+    //     console.log(`OTU ${otuids[property]}`);
+        
+    //   }
+    otuidsstring=otuids.map(e=>`OTU ${e}`);
 
     let trace1 = {
         type: "bar",
         orientation: "h",
         x: filteredSamples[0].sample_values.slice(0,10),
-        y: otuidstring
+        y: otuidsstring
     };
 
     let layout={
