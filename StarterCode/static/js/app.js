@@ -59,12 +59,13 @@ function buildTable(id) {
     var element = filtered[0]
     var panel = d3.select("#sample-metadata");
 
+    panel.append('h6').text(`id: ${element.id}`);
     panel.append('h6').text(`ethnicity: ${element.ethnicity}`);
+    panel.append('h6').text(`gender: ${element.gender}`);
+    panel.append('h6').text(`age: ${element.age}`);
     panel.append('h6').text(`location: ${element.location}`);
-    panel.append('h6').text(`location: ${element.location}`);
-    panel.append('h6').text(`location: ${element.location}`);
-    panel.append('h6').text(`location: ${element.location}`);
-    panel.append('h6').text(`location: ${element.location}`);
+    panel.append('h6').text(`bbtype: ${element.bbtype}`);
+    
     }
     )};
 
