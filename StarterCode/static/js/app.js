@@ -135,6 +135,16 @@ d3.select("selDataset")
 // (samples.names[0]) 
 
 
-buildBarchart(940);
-buildBubblechart(940);
-buildTable(940);
+// buildBarchart(940);
+// buildBubblechart(940);
+// buildTable(940);
+
+//this function wraps the previous three and deploys them with updates from the user input dropdown menu. 
+function init() {
+    buildBarchart(940);
+    buildBubblechart(940);
+    buildTable(940);
+  }
+ init();
+
+ 
