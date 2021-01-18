@@ -10,7 +10,6 @@ function buildBarchart (id)  {
     let otulabel=data.samples.map(info=> info.otu_labels);
     let metaData=data.metadata
     let samples=data.samples
-   
 
 //Filtering the data to populate the graph   
     const filtered = metaData.filter(metaDatavalue => metaDatavalue.id==id);
@@ -41,7 +40,6 @@ function buildBarchart (id)  {
         
     };
     let bardata= [trace1];
-
     Plotly.newPlot("bar", bardata, layout);
 })};
 
@@ -58,7 +56,7 @@ function buildTable(id) {
         const filtered = metaData.filter(metaDatavalue => metaDatavalue.id==id);
     var element = filtered[0]
     var panel = d3.select("#sample-metadata");
-
+    panel.empty();
     panel.append('h6').text(`id: ${element.id}`);
     panel.append('h6').text(`ethnicity: ${element.ethnicity}`);
     panel.append('h6').text(`gender: ${element.gender}`);
@@ -119,11 +117,6 @@ function buildBubblechart(id) {
           
           Plotly.newPlot('bubble', data, layout);
 
-
-
-
-
-
     })};
 
 //function that updates the 940 to the user input values
@@ -132,19 +125,29 @@ function buildBubblechart(id) {
 d3.select("selDataset") 
 
 
-// (samples.names[0]) 
-
-
-// buildBarchart(940);
-// buildBubblechart(940);
-// buildTable(940);
-
 //this function wraps the previous three and deploys them with updates from the user input dropdown menu. 
-function init() {
-    buildBarchart(940);
-    buildBubblechart(940);
-    buildTable(940);
-  }
- init();
+function optionChanged(id) {
 
- 
+    buildBarchart(id);
+    buildBubblechart(id);
+    buildTable(id);
+  }
+optionChanged(950);
+
+//    // Call updatePlotly() when a change takes place to the DOM
+// d3.selectAll("#selDataset").on("change", updatePlotly);
+  
+//   // This function is called when a dropdown menu item is selected
+//   function updatePlotly() {
+//     // Use D3 to select the dropdown menu
+//     var dropdownMenu = d3.select("#selDataset");
+//     // Assign the value of the dropdown menu option to a variable
+//     var dataset = dropdownMenu.property("value");
+//     var dataset=id
+    // does this bunch of updating code need to be insde the init() function?
+    //The var dataset=id sets up the user input to be the argument in the buildBubblechart, etc. functions.
+    //The contents of the init() will need to be updated to reflect id as the new argument instead of the hardcoded 940. 
+
+
+//issed for office hours: (1)getting the panel to clear out with each update and
+//(2) getting the dropdown menu to display the array values (let names=data.names)

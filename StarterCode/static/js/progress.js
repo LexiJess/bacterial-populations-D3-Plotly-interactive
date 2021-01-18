@@ -155,3 +155,19 @@ function buildTable(id) {
     )}
 
 buildTable(940);
+
+
+// This snippet of code was possibly how to populate the dropdown with the
+// IDs from samples.json
+// https://www.codebyamir.com/blog/populate-a-select-dropdown-list-with-json
+d3.json("samples.json").then(function(data){ 
+    let names=data.names
+
+    var selectedDataset = $("#selDataset");
+    selectedDataset.empty();
+    selectedDataset.append('<option selected="true" disabled>Choose ID</option>');
+    selectedDataset.prop('selectedIndex', 0);
+    $.each(names, function(index, value){
+        selectedDataset.append($(`<option></option>`).attr('value', value).text(value));
+    })
+});
