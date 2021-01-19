@@ -55,15 +55,18 @@ function buildTable(id) {
     //Filtering the data to populate the graph   
         const filtered = metaData.filter(metaDatavalue => metaDatavalue.id==id);
     var element = filtered[0]
+    
+    //Does this need to be in a list that can be cleared out with panel.empty() after each new user input?
+
+
     var panel = d3.select("#sample-metadata");
-    panel.empty();
     panel.append('h6').text(`id: ${element.id}`);
     panel.append('h6').text(`ethnicity: ${element.ethnicity}`);
     panel.append('h6').text(`gender: ${element.gender}`);
     panel.append('h6').text(`age: ${element.age}`);
     panel.append('h6').text(`location: ${element.location}`);
     panel.append('h6').text(`bbtype: ${element.bbtype}`);
-    
+    panel.empty();
     }
     )};
 
@@ -127,7 +130,7 @@ d3.select("selDataset")
 
 //this function wraps the previous three and deploys them with updates from the user input dropdown menu. 
 function optionChanged(id) {
-
+    
     buildBarchart(id);
     buildBubblechart(id);
     buildTable(id);
