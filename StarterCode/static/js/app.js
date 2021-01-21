@@ -18,7 +18,7 @@ function buildBarchart (id)  {
 
 
 //Slicing out the top ten items in the filteredSamples
-    var otuids = filteredSamples[0].otu_ids.slice(0,10);
+    var otuids = filteredSamples[0].otu_ids.slice(0,10).reverse();
     var otuidsstring=[];
 
  
@@ -31,7 +31,7 @@ function buildBarchart (id)  {
     let trace1 = {
         type: "bar",
         orientation: "h",
-        x: filteredSamples[0].sample_values.slice(0,10),
+        x: filteredSamples[0].sample_values.slice(0,10).reverse(),
         y: otuidsstring
     };
 
@@ -44,7 +44,7 @@ function buildBarchart (id)  {
 })};
 
   
-//Table code below
+//Table/panel code below
 function buildTable(id) {
     d3.json("samples.json").then(function(data) {
         console.log(data);
@@ -55,18 +55,16 @@ function buildTable(id) {
     //Filtering the data to populate the graph   
         const filtered = metaData.filter(metaDatavalue => metaDatavalue.id==id);
     var element = filtered[0]
-    
-    //Does this need to be in a list that can be cleared out with panel.empty() after each new user input?
 
 
     var panel = d3.select("#sample-metadata");
+    panel.html("");
     panel.append('h6').text(`id: ${element.id}`);
     panel.append('h6').text(`ethnicity: ${element.ethnicity}`);
     panel.append('h6').text(`gender: ${element.gender}`);
     panel.append('h6').text(`age: ${element.age}`);
     panel.append('h6').text(`location: ${element.location}`);
     panel.append('h6').text(`bbtype: ${element.bbtype}`);
-    panel.empty();
     }
     )};
 
@@ -125,17 +123,33 @@ function buildBubblechart(id) {
 //function that updates the 940 to the user input values
 // fuction optionChanged (variable) that takes the variable that is the user input to replace 940   
 
-d3.select("selDataset") 
+// d3.select("selDataset") 
 
 
 //this function wraps the previous three and deploys them with updates from the user input dropdown menu. 
-function optionChanged(id) {
+function optionChanged(newId) {
     
-    buildBarchart(id);
-    buildBubblechart(id);
-    buildTable(id);
+    buildBarchart(newId);
+    buildBubblechart(newId);
+    buildTable(newId);
   }
-optionChanged(950);
+optionChanged(940);
+
+function init(){
+    d3.json("samples.json").then(function(data){ 
+        console.log(data)
+        var dropdown = d3.select("#selDataset");
+        var samples=data.names;
+
+        samples.forEach(item=>dropdown.append("option").text(item).property("value", item));
+        var firstID = samples[0];
+        buildTable(firstID);
+        // buildBarchart(firstId);
+        // buildBubblechart(firstId);
+    }
+    
+    )};
+init();
 
 //    // Call updatePlotly() when a change takes place to the DOM
 // d3.selectAll("#selDataset").on("change", updatePlotly);
