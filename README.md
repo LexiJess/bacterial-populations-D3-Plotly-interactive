@@ -6,4 +6,4 @@ The data is parsed out and represented by the bubble chart, with the colors sign
 
 There is a striking difference among these donors. Some folks have barely any bacteria going on; others have dozens of types and high numbers in the population. 
 
-The data wrangling primarily utilizes JavaScript with D3 and Ploly libraries. This primarily involved accessing the data inside the samples.json dataset (through D3) and depends heavily on looping through the internal lists of that dataset, then anchoring the results into the HTML with div/tags. The result is a dynamic display that responds to the user input, showing one specific donor's bacterial population. 
+The data wrangling primarily utilizes JavaScript with D3 and Plotly libraries. This primarily involved accessing the data inside the samples.json dataset (through D3) and depends heavily on looping through the internal lists of that dataset, then anchoring the results into the HTML with div/tags. The result is a dynamic display that responds to the user input, showing one specific donor's bacterial population. 
