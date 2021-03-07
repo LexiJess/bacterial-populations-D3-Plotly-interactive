@@ -1,4 +1,4 @@
-Belly buttons are fascinating indentations (or extrusions) on the mammalian frame. What mysteries dwell within? Let's find out. 
+Belly buttons are fascinating indentations (or extrusions) on the mammalian frame. What mysteries dwell within? Let's find out. We're using D3 and Plotly libraries, a JSON dataset, and JavaScript/HTML as the primary languages. 
 
 This project explores the depth of the human navel by extracting and reformatting data from a scientific survey of the bacteriological residents of navels. Data includes metadata about the "donors" of the bacteria (age, gender, race, location, etc.), the reference number assigned to each species of bacteria, the name of the bacteria, and the numbers of each species of bacteria present. 
 
